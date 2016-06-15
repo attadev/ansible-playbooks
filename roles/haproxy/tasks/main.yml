@@ -1,0 +1,22 @@
+---
+- name: Add HAProxy 1.6 ppa repository
+  apt_repository: repo='ppa:vbernat/haproxy-1.6' update_cache=no
+  register: apt_source_added
+  
+- name: Run apt-get update if repo is added
+  apt: update_cache=yes
+  when: apt_source_added|changed
+
+- name: Disable autostart after installation on Ubuntu 16.04 as it is really annoying as a RHEL user
+  file: src=/dev/null dest=/etc/systemd/system/haproxy.service state=link force=yes
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
+- name: Install HAProxy 
+  apt: name='haproxy' state='latest'
+  
+- name: After configuration now we enable HAProxy to start
+  file: src=/dev/null dest=/etc/systemd/system/haproxy.service state=absent
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+  
+- name: Enable HAProxy service
+  service: name=haproxy enabled=yes state=started

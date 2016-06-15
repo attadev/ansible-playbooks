@@ -1,0 +1,4 @@
+---
+- hosts: test4
+  roles:
+   - haproxy
