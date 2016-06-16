@@ -84,7 +84,7 @@ This ansible role uses these ansible extra modules: zabbix_group, zabbix_host an
 
 Example:
 
-ansible-playbook -i roles/zabbix-agent/ansible_hosts roles/zabbix-agent/zabbix-agent.yml
+ansible-playbook -i inventory/sample roles/zabbix-agent/zabbix-agent.yml
 
 #Role Variables
 
