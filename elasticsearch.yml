@@ -1,0 +1,23 @@
+---
+- name: Elasticsearch with custom configuration
+  hosts: ubuntu3
+  become: yes
+  roles:
+    #expand to all available parameters
+    - { role: elasticsearch, es_instance_name: "ubuntu3",
+    es_config: {
+        node.name: "ubuntu3", 
+        cluster.name: "custom-cluster",
+        discovery.zen.ping.unicast.hosts: "localhost:9301",
+        http.port: 9201,
+        transport.tcp.port: 9301,
+        node.data: false,
+        node.master: true,
+        bootstrap.mlockall: true,
+        discovery.zen.ping.multicast.enabled: false } 
+    }
+  vars:
+    es_scripts: false
+    es_templates: false
+    es_version_lock: false
+    es_heap_size: 256m
