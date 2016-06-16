@@ -1,0 +1,15 @@
+---
+- hosts: ubuntu3
+  become: yes
+  roles:
+    - role: zabbix-agent
+      agent_server: 192.168.122.12
+      agent_serveractive: 192.168.122.12
+      zabbix_api_use: True
+      zabbix_url: http://ubuntu2/zabbix/
+      zabbix_useuip: 0
+      zabbix_version: 3.0
+      zabbix_host_groups:
+        - Linux servers
+      zabbix_link_templates:
+        - Template App Zabbix Agent

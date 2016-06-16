@@ -1,0 +1,3 @@
+[submodule "roles/ansible-elasticsearch"]
+	path = roles/elasticsearch
+	url = https://github.com/kalloa/ansible-elasticsearch.git
