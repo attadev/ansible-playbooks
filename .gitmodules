@@ -1,3 +1,6 @@
 [submodule "roles/ansible-elasticsearch"]
 	path = roles/elasticsearch
 	url = https://github.com/kalloa/ansible-elasticsearch.git
+[submodule "roles/mediawiki"]
+	path = roles/mediawiki
+	url = git@gitlab.hu1.attadev.com:attila.kallo/mediawiki.git
