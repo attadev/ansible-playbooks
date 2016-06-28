@@ -4,7 +4,7 @@
   become: yes
   roles:
     #expand to all available parameters
-    - { role: elasticsearch, es_instance_name: "{{ hostvars.inventory_hostname",
+    - { role: elasticsearch, es_instance_name: "{{ hostvars.inventory_hostname }}",
     es_config: {
       network.host: "0.0.0.0",
       node.data: true,
