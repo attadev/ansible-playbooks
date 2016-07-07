@@ -1,0 +1,40 @@
+- hosts: ubuntu1
+  become: yes
+  vars:
+    mysql_root_password: 'KqxpVnvfUAjpWlq4C0jy'
+    mysql_databases:
+      - name: mediawiki
+        collation: utf8_general_ci
+        encoding: utf8
+    mysql_users:
+      - name: mediawiki
+        host: localhost
+        password: 'HT5KeE8mi7NKWosPX193'
+        priv: mediawiki.*:ALL,GRANT
+    install_path: /var/lib/mediawiki
+    web_user: www-data
+    site_name: MediaWiki
+    meta_namespace: MediaWiki
+    base_url: http://192.168.122.12
+    scriptpath: /wiki
+    domain: server.loc
+    logo:
+      source_file: wiki.png
+      copy_custom_file: true
+    db:
+      server: localhost
+      name: mediawiki
+      user: mediawiki
+      password: 'HT5KeE8mi7NKWosPX193'
+      prefix: ""
+      table_options: "ENGINE=InnoDB, DEFAULT CHARSET=utf-8"
+    auto_config: true
+    emergency_contact: postmaster@server.loc
+    password_sender: postmaster@server.loc
+    cache:
+      type: CACHE_MEMCACHED
+      mem_cached_servers: "array('localhost:11211')"
+    ldap_config: true
+  roles:
+  - mysql
+  - mediawiki

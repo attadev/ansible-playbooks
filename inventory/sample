@@ -1,0 +1,8 @@
+[examples]
+ubuntu1
+ubuntu2
+ubuntu3
+
+[elastic_cluster_test]
+ubuntu2
+ubuntu3
